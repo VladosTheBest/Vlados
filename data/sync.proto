@@ -1,0 +1,36 @@
+syntax = "proto3";
+package data;
+
+option go_package = ".;data";
+
+enum EventCommandType {
+  Save = 0;
+  Update = 1;
+}
+
+message BigDecimal {
+  string Value = 1;
+}
+
+message Timestamp {
+  int64 Value = 1;
+}
+
+message GenericType {
+  oneof Value {
+    string StrValue = 2;
+    bool BoolValue=3;
+    uint32 Uint32Value = 4;
+    uint64 Uint64Value= 5;
+    int32 Int32Value = 6;
+    int64 Int64Value = 7;
+    BigDecimal BigDecimalValue = 8;
+    Timestamp TimestampValue = 9;
+  }
+}
+
+message SyncEvent {
+  string Model = 1;
+  EventCommandType Command = 2;
+  map<string, GenericType> Payload = 3;
+}

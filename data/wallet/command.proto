@@ -1,0 +1,20 @@
+syntax = "proto3";
+package wallet;
+
+message Command {
+  // the name of the action that it should execute
+  string Action = 1;
+  // a unique ID of the command in order to check if the action was already executed or not
+  string ID = 2;
+  // the chain and coin on which to execute the command
+  string Chain = 3;
+  string Coin = 4;
+  // the id of the user that triggered the action
+  uint64 UserID = 5;
+  // metadata
+  map<string, string> Meta = 6;
+  // data payload of the command
+  map<string, string> Payload = 7;
+  // external system
+  string System = 8;
+}

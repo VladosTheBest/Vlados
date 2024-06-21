@@ -1,0 +1,27 @@
+syntax = "proto3";
+package order_canceled_confirmation;
+
+message OrderCanceledConfirmation {
+  // the name of the action that it should execute
+  string Event = 1;
+  // each generated event should be unique
+  string ID = 2;
+  // Order Id
+  uint64 OrderId = 3;
+  // order cancelled status
+  OrderCanceledStatus Status = 4;
+  // why order not cancelled
+  string ErrorMsg = 5;
+}
+
+enum OrderCanceledStatus {
+  // OK is used when the order was cancelled by the matching engine
+  OK = 0; // FromME
+  InvalidOrderFromME = 1;
+  CancelFailedFromME = 2;
+  AlreadyFilled = 3;
+  AlreadyCancelled = 4;
+  SendingFailed = 5;
+  CancelFailed = 6;
+  Timeout = 7;
+}

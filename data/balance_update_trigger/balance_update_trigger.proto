@@ -1,0 +1,15 @@
+syntax = "proto3";
+package balance_update_trigger;
+
+message BalanceUpdateEvent {
+  // the name of the action that it should execute
+  string Event = 1;
+  // each generated event should be unique
+  string ID = 2;
+  // the if of the user associated with the event if any
+  uint64 UserID = 3;
+
+  uint64 SubAccount = 4;
+
+  bool IsInternal = 5;
+}

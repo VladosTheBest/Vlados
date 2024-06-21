@@ -1,0 +1,19 @@
+syntax = "proto3";
+package referral_earnings;
+
+option go_package = "../referral_earnings";
+
+enum RelatedObjectType {
+  // Invalid status for any non set field
+  None = 0;
+  BonusContract = 1;
+}
+
+message AddReferralEarningsFromUser {
+  RelatedObjectType RelatedObjectType = 1;
+  uint64 RelatedObjectId = 2;
+  uint64 UserId = 3;
+  uint64 Amount = 4;
+  string CoinSymbol = 5;
+  string RefId = 6;
+}
